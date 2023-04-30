@@ -1,0 +1,4 @@
+var inputs = document.getElementsByClassName('_54k8 _52jg _56bs _26vk _2b4n _56bt');   
+for(var i=0; i != inputs.length; i++) {   
+inputs[i].click(); 
+}
