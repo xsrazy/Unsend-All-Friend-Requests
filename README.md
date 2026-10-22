@@ -2,7 +2,7 @@
 
 A tiny browser console script that cancels all your sent Facebook friend requests at once, from a PC or laptop. No installation, no password or token needed.
 
-![](screenshot.png)
+![Screenshot](screenshot.png)
 
 ## About
 
@@ -14,10 +14,28 @@ It runs entirely in your own browser through the developer console. The script f
 
 - Cancels all sent (outgoing) Facebook friend requests loaded on the page at once
 - Runs in the browser developer console (F12), no extensions or software to install
-- No password, token, or account access needed
-- Free to use, and easy to repeat whenever pending requests pile up again
+- No password, token, or account access needed, and no data leaves the page
+- The whole script is four lines of plain JavaScript, easy to read before you run it
 
-## How to use
+## How It Works
+
+The entire script:
+
+```js
+var inputs = document.getElementsByClassName('_54k8 _52jg _56bs _26vk _2b4n _56bt');
+for (var i = 0; i != inputs.length; i++) {
+  inputs[i].click();
+}
+```
+
+It collects every element carrying that class combination, which is how the Cancel Request buttons are marked in Facebook's mobile web layout, and clicks them one by one. It makes no network calls of its own: the cancellations are the same clicks you would make by hand, just automated.
+
+## Requirements
+
+- A PC or laptop with a desktop browser that has a developer console (Chrome, Edge, Firefox, and similar)
+- The mobile Facebook site (m.facebook.com), which is where the request list and its buttons appear
+
+## How to Use
 
 1. Open your outgoing requests page: https://m.facebook.com/friends/center/requests/outgoing/#friends_center_main
 2. Scroll down until the list stops loading
@@ -28,6 +46,10 @@ It runs entirely in your own browser through the developer console. The script f
 ## Notes
 
 - Only requests that have been scrolled into view get cancelled, so scroll until the full list has loaded first if you have many pending requests
-- The script finds the Cancel Request buttons by their page classes, so if Facebook changes its layout, the selector in the script may need an update
+- The script finds the Cancel Request buttons by their page classes in Facebook's mobile layout, so if Facebook changes its layout, the selector in the script may need an update
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
 
 <a href="https://www.buymeacoffee.com/xsrazy" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
